@@ -25,7 +25,6 @@ public class ThreadMain {
 		String message = (String)jsonObject.get("message");
 		//Get the string lists
 		String header = message.substring(0, 6);
-		String payload = message.substring(6, message.length());
 	    String[] transed_header = (index.get(header)).split(":");
 	    String protocolName = transed_header[0];             // Protocol name
 	    String dispatcherName = transed_header[1];           // Dispatcher name
