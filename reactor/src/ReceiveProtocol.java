@@ -30,9 +30,21 @@ class ReceiveProtocol implements Runnable {
       byte[] echoBuffer = new byte[BUFSIZE];  // Receive Buffer
       // Receive until client closes connection, indicated by -1
       while ((recvMsgSize = in.read(echoBuffer)) != -1) {
-//        out.write(echoBuffer, 0, recvMsgSize);
         totalBytesEchoed += recvMsgSize;
       }
+      
+      String echoString = new String(echoBuffer);
+      String header = echoString.substring(0,6);
+      String payload = echoString.substring(6, echoString.length());
+      System.out.println(echoString);
+      
+	try {
+		Reactor reactor = new Reactor(header,payload);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	      
       System.out.println("Client said; " + new String(echoBuffer) );
       System.out.println("Client finished; received " + totalBytesEchoed + " bytes.");
     } catch (IOException e) {
