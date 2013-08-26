@@ -1,3 +1,4 @@
+import java.io.InputStream;
 import java.util.HashMap;
 // for IOException
 // for ServerSocket
@@ -6,26 +7,19 @@ public class Reactor {
 
 	HashMap<String, String> index = new HashMap<String, String>();
 	
-	public Reactor(String header, String payload) throws Exception{
+	public Reactor(String header, InputStream payload_stream) throws Exception {
 		
-		regesterHandler("0x0001","ConcreteEventHandlerA");
-		regesterHandler("0x0002","ConcreteEventHandlerB");
+		//핸들러설정을 xml로부터 읽어들인 다음에 index에 저장한다(등록)
+		index = (new Demultiplexer()).select("handler_config"); 
 		
-		dispatch(header, payload);
+		dispatch(header, payload_stream);
 	}
 	
-	public void dispatch(String header, String payload) throws Exception 
-	{						
-	    Handles handle = new Handles(getHandler(header), payload);
+	public void dispatch(String header, InputStream payload_stream) throws Exception {						
+	    Handles handle = new Handles(getHandler(header), payload_stream);
 	    
 	}
-	
-	private void regesterHandler(String header, String payload){
 		
-		index.put(header, payload);
-		
-	}
-	
 	private void removeHandler(String header) {
 		index.remove(header);
 	}

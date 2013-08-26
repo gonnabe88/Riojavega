@@ -37,11 +37,8 @@ class EchoProtocol implements Runnable {
       String header = echoString.substring(0,6);
       String payload = echoString.substring(6, echoString.length());
       System.out.println(echoString);
-      
-      InputStream payload_stream = new ByteArrayInputStream(payload.getBytes("UTF-8"));
-      
       try {
-		Reactor reactor = new Reactor(header,payload_stream);
+		Reactor reactor = new Reactor(header,payload);
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

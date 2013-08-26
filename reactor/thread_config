@@ -1,0 +1,18 @@
+<root>
+	<handler>
+		<code>0x0001</code>
+		<class>EchoProtocolFactory:PoolDispatcher</class>
+	</handler>
+	<handler>
+		<code>0x0002</code>
+		<class>EchoProtocolFactory:ThreadPerDispatcher</class>
+	</handler>
+	<handler>
+		<code>0x0003</code>
+		<class>ReceiveProtocolFactory:PoolDispatcher</class>
+	</handler>
+	<handler>
+		<code>0x0004</code>
+		<class>ReceiveProtocolFactory:ThreadPerDispatcher</class>
+	</handler>
+</root>

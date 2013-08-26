@@ -1,0 +1,10 @@
+<root>
+	<handler>
+		<code>0x0001</code>
+		<class>ConcreteEventHandlerA</class>
+	</handler>
+	<handler>
+		<code>0x0002</code>
+		<class>ConcreteEventHandlerB</class>
+	</handler>
+</root>
